@@ -22,9 +22,12 @@
 
   // Registra as funções que atualizam os gráficos e dados atuais da telemetria
   tempRef.on('value',function (snapshot) {
-    document.getElementById("currentTemp").innerText = snapshot.val();
- });
-  umidRef.on('value', onNewData('currentUmid', 'umidLineChart' , 'Umidade', '%'));
+    document.getElementById("currentTemp").innerText = snapshot.val() + 'm';
+  });
+  umidRef.on('value',function (snapshot) {
+    document.getElementById("currentUmid").innerText = snapshot.val();
+  });
+
 
 
   // Registrar função ao alterar valor de presença
