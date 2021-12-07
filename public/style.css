@@ -1,0 +1,28 @@
+body{
+    background-color: #E0E0E0;
+}
+
+nav {
+    background-color: #27cc06;
+}
+
+.content {
+    margin-top: 30px;
+}
+
+.statistic {
+    font-size: 5em;
+    margin-top: 10px ;
+}
+
+.card {
+    min-height: 250px;
+}
+
+.card-title {
+    text-align: center;
+}
+.sensors{
+    text-align: left;
+
+}

@@ -2,51 +2,22 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Sensoriamento Realtime com Firebase</title>
-
+    <title>ABP Iot 2 - Mauricio e Robson</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
-    <style>
-      body{
-        background-color: #E0E0E0;
-      }
+    <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
 
-      .content {
-        margin-top: 30px;
-      }
-
-      nav {
-        background-color: #256ff9;
-      }
-
-      .statistic {
-        font-size: 8em;
-        margin-top: 15px !important;
-      }
-
-      .card {
-        min-height: 250px;
-      }
-
-      .activator {
-        cursor: pointer;
-      }
-
-      @media screen and (max-width: 600px){
-        .statistic {
-          font-size: 5em;
-        }
-      }
-
-    </style>
 
   </head>
   <body>
     <div class="navbar-fixed">
       <nav class="nav-extended">
-        <div class="nav-wrapper">
-          <a href="#" class="brand-logo center">ABP IoT II</a>
+    <!--<div class="nav-content left">
+          <img src="https://www1.satc.edu.br/portais/acesso/public/assets/img/logoSatc.png"> 
+        </div> -->
+        <div class="nav-wrapper"> 
+          <a class="brand-logo center">ABP IoT II</a>
         </div>
         <div class="nav-content center">
           <h6>Dupla: Maurício e Robson</h6>
@@ -59,42 +30,37 @@
         <div class="col s12 m6">
           <div class="card">
             <div class="card-content">
-              <span class="card-title activator grey-text text-darken-4">
-                Sensores Maurício
-              </span>
+              <span class="card-title "> Sensores Maurício </span>
             </div>
             <div class="card-image center">
-              <span id="currentTemp" class="statistic">-</span>
+              <span class="card-content sensors "> Distância:  </span>
+              <span id="distanciaMauricio" class="statistic">-</span>
             </div>
-
+            <div class="card-image center">
+              <span class="card-content sensors "> Luminosidade:  </span>
+              <span id="luminosidadeMauricio" class="statistic">-</span>
+            </div>
             
           </div>
         </div>
         <div class="col s12 m6">
           <div class="card">
             <div class="card-content activator">
-              <span class="card-title grey-text text-darken-4">
-                Sensores Robson
-              </span>
-
+              <span class="card-title "> Sensores Robson </span>
             </div>
             <div class="card-image center">
-              <span id="currentUmid" class="statistic">-</span>
+              <span class="card-content sensors "> Distância:  </span>
+              <span id="distanciaRob" class="statistic">-</span>
             </div>
-            
-            <div class="card-reveal">
-              <span class="card-title grey-text text-darken-4">
-                Histórico
-                <i class="material-icons right">close</i>
-              </span>
-              <canvas id="umidLineChart"></canvas>
-            </div>
+            <div class="card-image center">
+              <span class="card-content sensors "> Luminosidade:  </span>
+              <span id="luminosidadeRob" class="statistic">-</span>
+            </div>          
           </div>
         </div>
       </div>
     </div>
   </body>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.min.js"></script>
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
   <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
