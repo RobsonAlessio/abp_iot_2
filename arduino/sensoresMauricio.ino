@@ -1,3 +1,7 @@
+/* 
+  Referências:
+  https://medium.com/@alvaroviebrantz/sensoriamento-realtime-com-firebase-e-esp8266-6e54b9bff1c1#.u00dghukd
+*/
 
 //Importações das bibliotecas
 #include <Arduino.h>
@@ -17,11 +21,11 @@
 const int echoPin = D2; 
 const int trigPin = D3;
 float distancia; 
-String distanciaRob;
+String distanciaMauricio;
 const int IN_A0 = A0;
-int luminosidadeRob;
-// Publicação a cada 2 segundos
-#define PUBLISH_INTERVAL 2000;
+int luminosidadeMauricio;
+// Publicação a cada 1 segundo
+#define PUBLISH_INTERVAL 1000;
 Ticker ticker;
 bool publishNewState = true;
 
@@ -54,12 +58,12 @@ void loop() {
     hcsr04();
     sensorLuminosity();
 
-    if(!isnan(distanciaRob) && !isnan(luminosidadeRob)){
+    if(!isnan(distanciaMauricio) && !isnan(luminosidadeMauricio)){
       // Mandando para o Firebase
-      Serial.println("Distância Rob: " +(String)distanciaRob);
-      Serial.println("Luminosidade Rob: " +(String)luminosidadeRob);
-      Firebase.pushFloat("distanciaRob", distanciaRob);
-      Firebase.pushFloat("luminosidadeRob", luminosidadeRob);    
+      Serial.println("Distância Mauricio: " +(String)distanciaMauricio);
+      Serial.println("Luminosidade Mauricio: " +(String)luminosidadeMauricio);
+      Firebase.setFloat("distanciaMauricio", distanciaMauricio);
+      Firebase.setFloat("luminosidadeMauricio", luminosidadeMauricio);    
       publishNewState = false;
     }else{
       Serial.println("Erro na publicação...");
@@ -107,10 +111,10 @@ void hcsr04(){
     unsigned long int tempo = pulseIn(echoPin,HIGH); //Retorna o tempo em microsegundos 
     //Distancia = Velocidade(Cm/Ms)*(tempo/2)
     distancia = ((0.034*(tempo/2))/100);
-    distanciaRob = String(distancia);
-    delay(200);
+    distanciaMauricio = String(distancia);
+    delay(100);
 }
 
 void sensorLuminosity(){
-  luminosidadeRob = analogRead(IN_A0);
+  luminosidadeMauricio = analogRead(IN_A0);
 }

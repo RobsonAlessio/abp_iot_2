@@ -11,7 +11,7 @@ nav {
 }
 
 .statistic {
-    font-size: 5em;
+    font-size: 4em;
     margin-top: 10px ;
 }
 
@@ -19,10 +19,26 @@ nav {
     min-height: 250px;
 }
 
-.card-title {
+.card-image {
+    text-align: left;
+    padding-left: 10%;
+}
+
+.activator{
+    background-color: silver;
+    font-family: "Roboto";
+    font-size: 2em;
     text-align: center;
 }
+
 .sensors{
     text-align: left;
+    font-size: 2em;
+    margin-left: 2px ;
+    margin-right: 10px ;
+}
 
+.titulo{
+    
+    font-weight: bold;
 }

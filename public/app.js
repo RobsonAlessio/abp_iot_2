@@ -9,6 +9,7 @@
     storageBucket: "sensoriamento-iot-bootcamp.appspot.com",
     messagingSenderId: "1055433905603"
   };
+  
   firebase.initializeApp(config);
 
   var db = firebase.database();
@@ -18,7 +19,6 @@
   var lumiRob = db.ref('luminosidadeRob');
   var distMauricio = db.ref('distanciaMauricio');
   var lumiMauricio = db.ref('luminosidadeMauricio');
-
 
   // Registra as funções que atualizam os gráficos e dados atuais da telemetria
   distRob.on('value',function (snapshot) {
