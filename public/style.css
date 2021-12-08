@@ -11,12 +11,12 @@ nav {
 }
 
 .statistic {
-    font-size: 3em;
+    font-size: 2em;
     margin-top: 10px ;
 }
 
 .card {
-    min-height: 250px;
+    min-height: 200px;
 }
 
 .card-image {
@@ -29,6 +29,7 @@ nav {
     font-family: "Roboto";
     font-size: 2em;
     text-align: center;
+    margin-bottom: 2%;
 }
 
 .sensors{
@@ -39,6 +40,5 @@ nav {
 }
 
 .titulo{
-    
     font-weight: bold;
 }
