@@ -1,10 +1,10 @@
 /* 
   Referências:
   https://medium.com/@alvaroviebrantz/sensoriamento-realtime-com-firebase-e-esp8266-6e54b9bff1c1#.u00dghukd
+  https://www.embarcados.com.br/envio-dados-ldr-firebase-esp8266/
 */
 
 //Importações das bibliotecas
-
 #include <ESP8266WiFi.h>
 #include <FirebaseArduino.h>
 #include <Ticker.h>
