@@ -43,7 +43,7 @@ void setup() {
 
   setupWifi();    
   setupFirebase();
-  Firebase.begin(FIREBASE_HOST, FIREBASE_AUTH);
+  //Firebase.begin(FIREBASE_HOST, FIREBASE_AUTH);
   setupPinos();
   // Registra o ticker para publicar de tempos em tempos
   ticker.attach_ms(PUBLISH_INTERVAL, publish);

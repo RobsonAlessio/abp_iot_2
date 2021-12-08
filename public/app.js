@@ -27,12 +27,23 @@
   });
   lumiRob.on('value',function (snapshot) {
     document.getElementById("luminosidadeRob").innerText = snapshot.val();
+    if(snapshot.val() > 500){
+    document.getElementById("lampR").style.visibility = "hidden";
+    }else{
+      document.getElementById("lampR").style.visibility = "visible";
+      }
   });
+
   distMauricio.on('value',function (snapshot) {
     document.getElementById("distanciaMauricio").innerText = parseFloat(snapshot.val().toFixed(2)) + ' m';
   });
   lumiMauricio.on('value',function (snapshot) {
     document.getElementById("luminosidadeMauricio").innerText = snapshot.val();
+    if(snapshot.val() > 500){
+      document.getElementById("lampM").style.visibility = "hidden";
+    }else{
+      document.getElementById("lampM").style.visibility = "visible";
+      }
   });
 
 })();
