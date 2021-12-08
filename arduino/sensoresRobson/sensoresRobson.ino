@@ -4,28 +4,28 @@
 */
 
 //Importações das bibliotecas
-#include <Arduino.h>
+
 #include <ESP8266WiFi.h>
 #include <FirebaseArduino.h>
 #include <Ticker.h>
 
 //Definindo o database do Firebase
-#define FIREBASE_HOST "abp-iot-2-default-rtdb.firebaseio.com"
-#define FIREBASE_AUTH "XmMpRoPvM0LHhQVEqx0DWGmneob13BuxeHiGOsrO"
+#define FIREBASE_HOST "abp-iot-2-mauricio-robson-default-rtdb.firebaseio.com"
+#define FIREBASE_AUTH "J8OtwuqbzP6yJzlaXwCxp2MFRNiSkulSFx59UhQn"
 //Definindo a rede WiFi
-#define WIFI_SSID "wifi_da_sua_casa"
-#define WIFI_PASSWORD "senha_da_wifi"
+#define WIFI_SSID "Quarto"
+#define WIFI_PASSWORD "Carlos7243"
 
 //Definição das variáveis
 #define LED_ONBOARD LED_BUILTIN
 const int echoPin = D2; 
 const int trigPin = D3;
 float distancia; 
-String distanciaMauricio;
+float distanciaRob;
 const int IN_A0 = A0;
-int luminosidadeMauricio;
+int luminosidadeRob;
 // Publicação a cada 1 segundo
-#define PUBLISH_INTERVAL 1000;
+int PUBLISH_INTERVAL = 1000;
 Ticker ticker;
 bool publishNewState = true;
 
@@ -43,7 +43,8 @@ void setup() {
 
   setupWifi();    
   setupFirebase();
-  setupPinos()
+  Firebase.begin(FIREBASE_HOST, FIREBASE_AUTH);
+  setupPinos();
   // Registra o ticker para publicar de tempos em tempos
   ticker.attach_ms(PUBLISH_INTERVAL, publish);
 }
@@ -53,17 +54,17 @@ void loop() {
 
   // Apenas publique quando passar o tempo determinado
   if(publishNewState){
-    Serial.println("Publicando novo estado: ");
+    Serial.println("################################################");
     // Obtem os dados dos sensores
     hcsr04();
     sensorLuminosity();
 
-    if(!isnan(distanciaMauricio) && !isnan(luminosidadeMauricio)){
+    if(!isnan(distanciaRob) && !isnan(luminosidadeRob)){
       // Mandando para o Firebase
-      Serial.println("Distância Mauricio: " +(String)distanciaMauricio);
-      Serial.println("Luminosidade Mauricio: " +(String)luminosidadeMauricio);
-      Firebase.setFloat("distanciaMauricio", distanciaMauricio);
-      Firebase.setFloat("luminosidadeMauricio", luminosidadeMauricio);    
+      Serial.println("Distância Rob: " +(String)distanciaRob);
+      Serial.println("Luminosidade Rob: " +(String)luminosidadeRob);
+      Firebase.setFloat("distanciaRob", distanciaRob);
+      Firebase.setFloat("luminosidadeRob", luminosidadeRob);    
       publishNewState = false;
     }else{
       Serial.println("Erro na publicação...");
@@ -110,11 +111,11 @@ void hcsr04(){
     digitalWrite(trigPin, LOW); 
     unsigned long int tempo = pulseIn(echoPin,HIGH); //Retorna o tempo em microsegundos 
     //Distancia = Velocidade(Cm/Ms)*(tempo/2)
-    distancia = ((0.034*(tempo/2))/100);
-    distanciaMauricio = String(distancia);
+    distanciaRob = ((0.034*(tempo/2))/100);
+    //distanciaRob = String(distancia);
     delay(100);
 }
 
 void sensorLuminosity(){
-  luminosidadeMauricio = analogRead(IN_A0);
+  luminosidadeRob = analogRead(IN_A0);
 }

@@ -10,8 +10,8 @@
 #include <Ticker.h>
 
 //Definindo o database do Firebase
-#define FIREBASE_HOST "abp-iot-2-default-rtdb.firebaseio.com"
-#define FIREBASE_AUTH "XmMpRoPvM0LHhQVEqx0DWGmneob13BuxeHiGOsrO"
+#define FIREBASE_HOST "abp-iot-2-mauricio-robson-default-rtdb.firebaseio.com"
+#define FIREBASE_AUTH "J8OtwuqbzP6yJzlaXwCxp2MFRNiSkulSFx59UhQn"
 //Definindo a rede WiFi
 #define WIFI_SSID "wifi_da_sua_casa"
 #define WIFI_PASSWORD "senha_da_wifi"
@@ -21,9 +21,9 @@
 const int echoPin = D2; 
 const int trigPin = D3;
 float distancia; 
-String distanciaRob;
+String distanciaMauricio;
 const int IN_A0 = A0;
-int luminosidadeRob;
+int luminosidadeMauricio;
 // Publicação a cada 1 segundo
 #define PUBLISH_INTERVAL 1000;
 Ticker ticker;
@@ -58,12 +58,12 @@ void loop() {
     hcsr04();
     sensorLuminosity();
 
-    if(!isnan(distanciaRob) && !isnan(luminosidadeRob)){
+    if(!isnan(distanciaMauricio) && !isnan(luminosidadeMauricio)){
       // Mandando para o Firebase
-      Serial.println("Distância Rob: " +(String)distanciaRob);
-      Serial.println("Luminosidade Rob: " +(String)luminosidadeRob);
-      Firebase.setFloat("distanciaRob", distanciaRob);
-      Firebase.setFloat("luminosidadeRob", luminosidadeRob);    
+      Serial.println("Distância Mauricio: " +(String)distanciaMauricio);
+      Serial.println("Luminosidade Mauricio: " +(String)luminosidadeMauricio);
+      Firebase.setFloat("distanciaMauricio", distanciaMauricio);
+      Firebase.setFloat("luminosidadeMauricio", luminosidadeMauricio);    
       publishNewState = false;
     }else{
       Serial.println("Erro na publicação...");
@@ -111,10 +111,10 @@ void hcsr04(){
     unsigned long int tempo = pulseIn(echoPin,HIGH); //Retorna o tempo em microsegundos 
     //Distancia = Velocidade(Cm/Ms)*(tempo/2)
     distancia = ((0.034*(tempo/2))/100);
-    distanciaRob = String(distancia);
+    distanciaMauricio = String(distancia);
     delay(100);
 }
 
 void sensorLuminosity(){
-  luminosidadeRob = analogRead(IN_A0);
+  luminosidadeMauricio = analogRead(IN_A0);
 }
