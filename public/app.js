@@ -28,9 +28,9 @@
   lumiRob.on('value',function (snapshot) {
     document.getElementById("luminosidadeRob").innerText = snapshot.val();
     if(snapshot.val() > 500){
-    document.getElementById("lampR").style.visibility = "hidden";
+    document.getElementById("lampR").style.color = "grey";
     }else{
-      document.getElementById("lampR").style.visibility = "visible";
+      document.getElementById("lampR").style.color = "gold";
       }
   });
 
@@ -40,9 +40,9 @@
   lumiMauricio.on('value',function (snapshot) {
     document.getElementById("luminosidadeMauricio").innerText = snapshot.val();
     if(snapshot.val() > 500){
-      document.getElementById("lampM").style.visibility = "hidden";
+      document.getElementById("lampM").style.color = "grey";
     }else{
-      document.getElementById("lampM").style.visibility = "visible";
+      document.getElementById("lampM").style.color = "gold";
       }
   });
 
