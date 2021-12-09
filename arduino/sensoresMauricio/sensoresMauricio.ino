@@ -43,7 +43,7 @@ void setup() {
 
   setupWifi();    
   setupFirebase();
-  //Firebase.begin(FIREBASE_HOST, FIREBASE_AUTH);
+  Firebase.begin(FIREBASE_HOST, FIREBASE_AUTH);
   setupPinos();
   // Registra o ticker para publicar de tempos em tempos
   ticker.attach_ms(PUBLISH_INTERVAL, publish);
@@ -61,8 +61,8 @@ void loop() {
 
     if(!isnan(distanciaMauricio) && !isnan(luminosidadeMauricio)){
       // Mandando para o Firebase
-      Serial.println("Distância Rob: " +(String)distanciaMauricio);
-      Serial.println("Luminosidade Rob: " +(String)luminosidadeMauricio);
+      Serial.println("Distância Maurício: " +(String)distanciaMauricio);
+      Serial.println("Luminosidade Maurício: " +(String)luminosidadeMauricio);
       Firebase.setFloat("distanciaMauricio", distanciaMauricio);
       Firebase.setFloat("luminosidadeMauricio", luminosidadeMauricio);    
       publishNewState = false;
