@@ -13,8 +13,8 @@
 #define FIREBASE_HOST "abp-iot-2-mauricio-robson-default-rtdb.firebaseio.com"
 #define FIREBASE_AUTH "J8OtwuqbzP6yJzlaXwCxp2MFRNiSkulSFx59UhQn"
 //Definindo a rede WiFi
-#define WIFI_SSID "Quarto"
-#define WIFI_PASSWORD "Carlos7243"
+#define WIFI_SSID "SATC IOT"
+#define WIFI_PASSWORD "IOT2021#"
 
 //Definição das variáveis
 #define LED_ONBOARD LED_BUILTIN
